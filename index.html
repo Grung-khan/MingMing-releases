@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MingMing — Free Medical Exam Prep App</title>
+  <meta name="description" content="Free, offline-first study app for medical students featuring uWorld, Amboss, NBME, and 10+ Qbanks. Available on Windows and Android.">
+  <link rel="icon" href="icon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0a0a0a',
+            card: '#141414',
+            accent: '#F28C28',
+            'accent-hover': '#e07b18',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --card: #141414;
+      --accent: #F28C28;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { background-color: var(--bg); }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #ffffff;
+      background-color: var(--bg);
+      overflow-x: hidden;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Fade in animation */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Screenshot gallery */
+    .gallery {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 2rem 0;
+      scrollbar-width: none;
+    }
+    .gallery::-webkit-scrollbar { display: none; }
+    .gallery img {
+      scroll-snap-align: center;
+      flex-shrink: 0;
+      border-radius: 12px;
+      border: 1px solid #222;
+    }
+
+    /* Feature card hover */
+    .feature-card {
+      background: var(--card);
+      border: 1px solid #1f1f1f;
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .feature-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Hero glow */
+    .hero-glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(242,140,40,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    /* Download button */
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-outline {
+      border: 1.5px solid #333;
+      color: #fff;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .btn-solid {
+      background: var(--accent);
+      color: #000;
+      border: 1.5px solid var(--accent);
+    }
+    .btn-solid:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    /* Smooth scroll */
+    html.lenis, html.lenis body { height: auto; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden">
+    <!-- Telegram CTA - top right -->
+    <a href="https://t.me/mingming_khan" class="absolute top-6 right-6 z-20 flex items-center gap-2 px-4 py-2.5 rounded-full border border-gray-700 bg-gray-900/80 backdrop-blur-sm text-sm text-gray-300 hover:border-accent hover:text-accent transition-all">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+      <span class="hidden sm:inline">Need free Qbanks? Join Telegram</span>
+      <span class="sm:hidden">Join Telegram</span>
+    </a>
+
+    <div class="hero-glow"></div>
+    <img src="icon.png" alt="MingMing" class="w-28 h-28 rounded-[28px] mb-8 relative z-10">
+    <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 relative z-10">
+      <span class="text-accent">Ming</span><span>Ming</span>
+    </h1>
+    <p class="text-lg md:text-xl text-gray-400 max-w-xl mb-10 relative z-10">
+      Free, offline-first study app for medical students.<br class="hidden md:block">
+      <strong class="text-gray-300">100% local.</strong> No account. No cloud. No tracking.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center relative z-10">
+      <a href="https://github.com/Grung-khan/MingMing-releases/releases" class="btn-download btn-outline">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download for Windows
+      </a>
+      <a href="https://github.com/Grung-khan/MingMing-releases/releases" class="btn-download btn-solid">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download for Android
+      </a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="fade-section max-w-5xl mx-auto px-6 py-24">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Features</h2>
+    <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto">Everything you need to ace your medical exams — offline, private, and free.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="feature-card">
+        <div class="text-3xl mb-3">📚</div>
+        <h3 class="text-lg font-semibold mb-2">Content & Resources</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Qbanks for <strong class="text-white">uWorld, Amboss, Mehlman, USMLE-Rx, BMJ, Prometric, Amedex, BoardVitals, AceQBank, PassMedicine, CanadaQBank, MPlusX</strong>. Plus 4 libraries and 2 uWorld readydeck flashcard decks.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="text-3xl mb-3">🎨</div>
+        <h3 class="text-lg font-semibold mb-2">Beautiful, Polished UI</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Clean, intuitive interface with <strong class="text-white">7 themes</strong>: Light, Dark Mode, Surgical Scrub, Petri Dish, Champion Gold, Biohazard, and Neon Virus.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="text-3xl mb-3">🛠️</div>
+        <h3 class="text-lg font-semibold mb-2">Customizable Study Sessions</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Build sessions by <strong class="text-white">discipline, system, and topic</strong>. Choose Study or Exam mode. Include previously incorrect questions. Flag questions. Resume unfinished sessions.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="text-3xl mb-3">🖥️</div>
+        <h3 class="text-lg font-semibold mb-2">Session Interface Styles</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Choose from <strong class="text-white">NBME, Amboss, or MingMing</strong> interface styles. Amboss Qbanks open in Amboss mode by default. Create simulation sessions for uWorld.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="text-3xl mb-3">✏️</div>
+        <h3 class="text-lg font-semibold mb-2">During a Session</h3>
+        <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-white">Highlight text</strong> with colors. Create custom flashcards. Write to notebook. Open related topics in Amboss or uWorld Library. Built-in timer per block.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="text-3xl mb-3">🤖</div>
+        <h3 class="text-lg font-semibold mb-2">AI Integration</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Get <strong class="text-white">AI walkthroughs</strong> for any question. Chat with AI in the context of the question you just answered. Powered by Gemini.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="text-3xl mb-3">📊</div>
+        <h3 class="text-lg font-semibold mb-2">Progress & Analytics</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Track progress in each Qbank. <strong class="text-white">Detailed reports</strong> by discipline. Predict your exam score. Apply filters and search through any Qbank.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="text-3xl mb-3">💾</div>
+        <h3 class="text-lg font-semibold mb-2">Backup & Cross-Platform</h3>
+        <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-white">Export settings</strong> as a JSON backup. Import on any device — works cross-platform between Windows and Android.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="fade-section py-24">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Screenshots</h2>
+
+    <div class="gallery px-6">
+      <img src="screenshots/pc/Screenshot%202026-06-18%20224038.png" alt="Qbanks" class="h-64 md:h-80">
+      <img src="screenshots/pc/Screenshot%202026-06-18%20224143.png" alt="Session" class="h-64 md:h-80">
+      <img src="screenshots/pc/Screenshot%202026-06-18%20224224.png" alt="Review" class="h-64 md:h-80">
+      <img src="screenshots/pc/Screenshot%202026-06-18%20224308.png" alt="Settings" class="h-64 md:h-80">
+      <img src="screenshots/pc/Screenshot%202026-06-18%20224331.png" alt="Analytics" class="h-64 md:h-80">
+      <img src="screenshots/android/IMG-20260608-WA0034.jpg" alt="Android" class="h-64 md:h-80">
+      <img src="screenshots/android/IMG-20260608-WA0035.jpg" alt="Android" class="h-64 md:h-80">
+      <img src="screenshots/android/IMG-20260608-WA0045.jpg" alt="Android" class="h-64 md:h-80">
+      <img src="screenshots/android/IMG-20260617-WA0030.jpg" alt="Android" class="h-64 md:h-80">
+      <img src="screenshots/android/IMG-20260617-WA0032.jpg" alt="Android" class="h-64 md:h-80">
+      <img src="screenshots/android/IMG-20260617-WA0035.jpg" alt="Android" class="h-64 md:h-80">
+      <img src="screenshots/android/IMG-20260617-WA0037.jpg" alt="Android" class="h-64 md:h-80">
+    </div>
+
+    <p class="text-center text-gray-500 text-sm mt-4">← Scroll to see more →</p>
+  </section>
+
+  <!-- Download -->
+  <section class="fade-section max-w-3xl mx-auto px-6 py-24 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Download MingMing</h2>
+    <p class="text-gray-400 mb-10">Free on Windows and Android. No account required.</p>
+
+    <div class="flex flex-wrap gap-4 justify-center mb-12">
+      <a href="https://github.com/Grung-khan/MingMing-releases/releases" class="btn-download btn-outline">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Windows
+      </a>
+      <a href="https://github.com/Grung-khan/MingMing-releases/releases" class="btn-download btn-solid">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Android
+      </a>
+    </div>
+
+    <table class="w-full text-left text-sm">
+      <thead>
+        <tr class="border-b border-gray-800">
+          <th class="py-3 text-gray-400 font-medium">Platform</th>
+          <th class="py-3 text-gray-400 font-medium">File</th>
+          <th class="py-3 text-gray-400 font-medium">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-gray-800/50">
+          <td class="py-3">Windows</td>
+          <td class="py-3 text-gray-300 font-mono text-xs">MingMing Setup X.Y.Z.exe</td>
+          <td class="py-3 text-gray-400">Run installer, follow prompts</td>
+        </tr>
+        <tr>
+          <td class="py-3">Android</td>
+          <td class="py-3 text-gray-300 font-mono text-xs">MingMing-X.Y.Z.apk</td>
+          <td class="py-3 text-gray-400">Enable "Install from unknown sources" if needed</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-800 py-12 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="icon.png" alt="MingMing" class="w-8 h-8 rounded-lg">
+        <span class="font-semibold">MingMing</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-gray-400">
+        <a href="https://t.me/mingming_khan" class="hover:text-accent transition-colors">Telegram</a>
+        <a href="https://github.com/Grung-khan/MingMing-releases" class="hover:text-accent transition-colors">GitHub</a>
+        <span>Free to use</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
