@@ -21,31 +21,70 @@ Go to [**Releases**](https://github.com/Grung-khan/MingMing-releases/releases) t
 
 ## About
 
-MingMing is a free app designed specifically for medical students to practice questions from world-renowned Qbank companies like **uWorld**, **Amboss**, **USMLERx**, **Mehlman**, **NBME**, and others.
+MingMing is a free, offline-first app designed specifically for medical students to practice questions from world-renowned Qbank companies like **uWorld**, **Amboss**, **USMLE-Rx**, **Mehlman**, **NBME**, and others.
 
-### Core Features
+**MingMing runs entirely on your device.** All your data stays local — no account, no cloud, no tracking. Internet is only needed for AI features (Gemini integration with a free API key).
 
-- **Qbanks** — Practice questions in NBME mode, Amboss mode, or default MingMing mode
-- **Libraries** — Access Lexi-drugs, Amboss Library, uWorld Library, and UpToDate Library
-- **Flashcards** — Review decks for active recall and long-term retention
-- **AI Features** — Built-in Gemini AI integration (free API key required)
-- **Offline-First** — Fully functional without internet (except AI features)
+## Features
+
+### Content & Resources
+- Qbanks available for free: **uWorld**, **Amboss**, **Mehlman**, **USMLE-Rx**, **BMJ**, **Prometric**, **Amedex**, **BoardVitals**, **AceQBank**, **PassMedicine**, **CanadaQBank**, **MPlusX**
+- 4 Libraries: **Amboss Library**, **uWorld Library**, **UpToDate Library**, **Lexi-Drugs**
+- 2 uWorld readydeck flashcard decks
+
+### Beautiful, Polished UI
+- Clean, intuitive interface
+- 7 themes: **Light**, **Dark Mode**, **Surgical Scrub**, **Petri Dish**, **Champion Gold**, **Biohazard**, **Neon Virus**
+
+### Customizable Study Sessions
+- Build a personalized session by **discipline**, **system**, and **topic**
+- Choose between **Study Mode** or **Exam Mode**
+- Option to **include previously incorrect questions**
+- **Flag** any question for later review
+- **Resume** unfinished sessions
+
+### Session Interface Styles
+- Choose from **NBME**, **Amboss**, or **MingMing** interface styles
+- Unique, intuitive default **MingMing style**
+- Amboss Qbanks open in Amboss mode by default; uWorld and NBMEs in NBME mode; others in MingMing mode
+- Create **simulation sessions** for uWorld Qbanks
+
+### During a Session
+- **Highlight text** with various colors
+- **Create custom flashcards** from within a session
+- **Write to notebook** from within a session
+- Open related topics in the **Amboss or uWorld Library** directly from the session
+- Built-in **timer** tracks time per block
+
+### AI Integration
+- **AI walkthroughs** for any question
+- **Chat with AI** in the context of the question you just answered
+
+### Progress & Analytics
+- Track your **progress** in each Qbank
+- **Detailed reports** on performance by discipline
+- **Predict your exam score** (equated percent correct) based on your performance
+- Apply **filters and search** through any Qbank
+
+### Backup & Cross-Platform
+- **Export your settings** as a JSON backup file
+- **Import settings** on any device — works cross-platform
 
 ## Screenshots
 
 ### Windows
 
-<img src="screenshots/pc/Screenshot%202026-06-18%20224038.png" width="300"> <img src="screenshots/pc/Screenshot%202026-06-18%20224143.png" width="300"> <img src="screenshots/pc/Screenshot%202026-06-18%20224224.png" width="300">
+<img src="screenshots/pc/Screenshot%202026-06-18%20224038.png" width="200"> <img src="screenshots/pc/Screenshot%202026-06-18%20224143.png" width="200"> <img src="screenshots/pc/Screenshot%202026-06-18%20224224.png" width="200">
 
-<img src="screenshots/pc/Screenshot%202026-06-18%20224308.png" width="300"> <img src="screenshots/pc/Screenshot%202026-06-18%20224331.png" width="300">
+<img src="screenshots/pc/Screenshot%202026-06-18%20224308.png" width="200"> <img src="screenshots/pc/Screenshot%202026-06-18%20224331.png" width="200">
 
 ### Android
 
-<img src="screenshots/android/IMG-20260608-WA0034.jpg" width="300"> <img src="screenshots/android/IMG-20260608-WA0035.jpg" width="300"> <img src="screenshots/android/IMG-20260608-WA0045.jpg" width="300">
+<img src="screenshots/android/IMG-20260608-WA0034.jpg" width="200"> <img src="screenshots/android/IMG-20260608-WA0035.jpg" width="200"> <img src="screenshots/android/IMG-20260608-WA0045.jpg" width="200">
 
-<img src="screenshots/android/IMG-20260608-WA0046.jpg" width="300"> <img src="screenshots/android/IMG-20260617-WA0030.jpg" width="300"> <img src="screenshots/android/IMG-20260617-WA0032.jpg" width="300">
+<img src="screenshots/android/IMG-20260608-WA0046.jpg" width="200"> <img src="screenshots/android/IMG-20260617-WA0030.jpg" width="200"> <img src="screenshots/android/IMG-20260617-WA0032.jpg" width="200">
 
-<img src="screenshots/android/IMG-20260617-WA0035.jpg" width="300"> <img src="screenshots/android/IMG-20260617-WA0037.jpg" width="300">
+<img src="screenshots/android/IMG-20260617-WA0035.jpg" width="200"> <img src="screenshots/android/IMG-20260617-WA0037.jpg" width="200">
 
 ## How to Use
 
