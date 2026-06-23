@@ -3,7 +3,7 @@
 Your all-in-one study companion for medical exam preparation.
 
 [![Join Telegram](https://img.shields.io/badge/Join-Telegram%20Group-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/mingming_khan)
-[![Video Tutorial](https://img.shields.io/badge/Watch-Video%20Tutorial-red?style=for-the-badge&logo=youtube&logoColor=white)](video_tutorial.mp4)
+[![Watch Video](https://img.shields.io/badge/Watch-Video%20Tutorial-red?style=for-the-badge&logo=youtube&logoColor=white)](https://github.com/Grung-khan/MingMing-releases/blob/master/video_tutorial.mp4)
 
 ## Download
 
