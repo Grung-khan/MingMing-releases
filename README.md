@@ -55,11 +55,14 @@ C:\Users\{your-username}\AppData\Roaming\MingMing\local-databases\
 ```
 
 **Android:**
-```
-Android/data/com.mingming.app/files/local-databases/
-```
 
-Paste unzipped resource folders into this directory, or delete ones you no longer need. Then tap **"Refresh Databases"** in the app's User Settings.
+The `Android/data/` folder cannot be accessed directly on most phones. You'll need to:
+
+1. Connect your phone to a PC via USB cable.
+2. On your phone, select "File Transfer" mode when prompted.
+3. Navigate to `Internal Storage/Android/data/com.mingming.app/files/local-databases/` on your PC.
+4. Paste unzipped resource folders into this directory, or delete ones you no longer need.
+5. Open MingMing and tap **"Refresh Databases"** in User Settings.
 
 ## Getting Help
 
