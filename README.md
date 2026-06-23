@@ -59,17 +59,13 @@ MingMing is a free, offline-first app designed specifically for medical students
 
 ### Windows
 
-<img src="screenshots/pc/Screenshot%202026-06-18%20224038.png" width="200"> <img src="screenshots/pc/Screenshot%202026-06-18%20224143.png" width="200"> <img src="screenshots/pc/Screenshot%202026-06-18%20224224.png" width="200">
-
-<img src="screenshots/pc/Screenshot%202026-06-18%20224308.png" width="200"> <img src="screenshots/pc/Screenshot%202026-06-18%20224331.png" width="200">
+<img src="screenshots/pc/Screenshot%202026-06-18%20224038.png" width="150"> <img src="screenshots/pc/Screenshot%202026-06-18%20224143.png" width="150"> <img src="screenshots/pc/Screenshot%202026-06-18%20224224.png" width="150"> <img src="screenshots/pc/Screenshot%202026-06-18%20224308.png" width="150"> <img src="screenshots/pc/Screenshot%202026-06-18%20224331.png" width="150">
 
 ### Android
 
-<img src="screenshots/android/IMG-20260608-WA0034.jpg" width="200"> <img src="screenshots/android/IMG-20260608-WA0035.jpg" width="200"> <img src="screenshots/android/IMG-20260608-WA0045.jpg" width="200">
+<img src="screenshots/android/IMG-20260608-WA0034.jpg" width="150"> <img src="screenshots/android/IMG-20260608-WA0035.jpg" width="150"> <img src="screenshots/android/IMG-20260608-WA0045.jpg" width="150"> <img src="screenshots/android/IMG-20260608-WA0046.jpg" width="150">
 
-<img src="screenshots/android/IMG-20260608-WA0046.jpg" width="200"> <img src="screenshots/android/IMG-20260617-WA0030.jpg" width="200"> <img src="screenshots/android/IMG-20260617-WA0032.jpg" width="200">
-
-<img src="screenshots/android/IMG-20260617-WA0035.jpg" width="200"> <img src="screenshots/android/IMG-20260617-WA0037.jpg" width="200">
+<img src="screenshots/android/IMG-20260617-WA0030.jpg" width="150"> <img src="screenshots/android/IMG-20260617-WA0032.jpg" width="150"> <img src="screenshots/android/IMG-20260617-WA0035.jpg" width="150"> <img src="screenshots/android/IMG-20260617-WA0037.jpg" width="150">
 
 ## Download
 
