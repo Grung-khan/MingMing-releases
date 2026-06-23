@@ -31,6 +31,30 @@ MingMing is a free app designed specifically for medical students to practice qu
 - **AI Features** — Built-in Gemini AI integration (free API key required)
 - **Offline-First** — Fully functional without internet (except AI features)
 
+## Screenshots
+
+### Windows
+
+<img src="screenshots/pc/Screenshot%202026-06-18%20224038.png" width="700">
+
+<img src="screenshots/pc/Screenshot%202026-06-18%20224143.png" width="700">
+
+<img src="screenshots/pc/Screenshot%202026-06-18%20224224.png" width="700">
+
+<img src="screenshots/pc/Screenshot%202026-06-18%20224308.png" width="700">
+
+<img src="screenshots/pc/Screenshot%202026-06-18%20224331.png" width="700">
+
+### Android
+
+<img src="screenshots/android/IMG-20260608-WA0034.jpg" width="300"> <img src="screenshots/android/IMG-20260608-WA0035.jpg" width="300">
+
+<img src="screenshots/android/IMG-20260608-WA0045.jpg" width="300"> <img src="screenshots/android/IMG-20260608-WA0046.jpg" width="300">
+
+<img src="screenshots/android/IMG-20260617-WA0030.jpg" width="300"> <img src="screenshots/android/IMG-20260617-WA0032.jpg" width="300">
+
+<img src="screenshots/android/IMG-20260617-WA0035.jpg" width="300"> <img src="screenshots/android/IMG-20260617-WA0037.jpg" width="300">
+
 ## How to Use
 
 ### Step 1: Install the App
