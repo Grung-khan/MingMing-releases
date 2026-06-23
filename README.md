@@ -4,21 +4,6 @@ Your all-in-one study companion for medical exam preparation.
 
 [![Join Telegram](https://img.shields.io/badge/Join-Telegram%20Group-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/mingming_khan)
 
-
-
-https://github.com/user-attachments/assets/907f9b20-f454-4a28-9bff-c939d8ebbc78
-
-
-
-## Download
-
-Go to [**Releases**](https://github.com/Grung-khan/MingMing-releases/releases) to download the latest version.
-
-| Platform | File | Notes |
-|---|---|---|
-| Windows | `MingMing Setup X.Y.Z.exe` | Run installer, follow prompts |
-| Android | `MingMing-X.Y.Z.apk` | Enable "Install from unknown sources" if needed |
-
 ## About
 
 MingMing is a free, offline-first app designed specifically for medical students to practice questions from world-renowned Qbank companies like **uWorld**, **Amboss**, **USMLE-Rx**, **Mehlman**, **NBME**, and others.
@@ -27,46 +12,46 @@ MingMing is a free, offline-first app designed specifically for medical students
 
 ## Features
 
-### Content & Resources
+### 📚 Content & Resources
 - Qbanks available for free: **uWorld**, **Amboss**, **Mehlman**, **USMLE-Rx**, **BMJ**, **Prometric**, **Amedex**, **BoardVitals**, **AceQBank**, **PassMedicine**, **CanadaQBank**, **MPlusX**
 - 4 Libraries: **Amboss Library**, **uWorld Library**, **UpToDate Library**, **Lexi-Drugs**
 - 2 uWorld readydeck flashcard decks
 
-### Beautiful, Polished UI
+### 🎨 Beautiful, Polished UI
 - Clean, intuitive interface
 - 7 themes: **Light**, **Dark Mode**, **Surgical Scrub**, **Petri Dish**, **Champion Gold**, **Biohazard**, **Neon Virus**
 
-### Customizable Study Sessions
+### 🛠️ Customizable Study Sessions
 - Build a personalized session by **discipline**, **system**, and **topic**
 - Choose between **Study Mode** or **Exam Mode**
 - Option to **include previously incorrect questions**
 - **Flag** any question for later review
 - **Resume** unfinished sessions
 
-### Session Interface Styles
+### 🖥️ Session Interface Styles
 - Choose from **NBME**, **Amboss**, or **MingMing** interface styles
 - Unique, intuitive default **MingMing style**
 - Amboss Qbanks open in Amboss mode by default; uWorld and NBMEs in NBME mode; others in MingMing mode
 - Create **simulation sessions** for uWorld Qbanks
 
-### During a Session
+### ✏️ During a Session
 - **Highlight text** with various colors
 - **Create custom flashcards** from within a session
 - **Write to notebook** from within a session
 - Open related topics in the **Amboss or uWorld Library** directly from the session
 - Built-in **timer** tracks time per block
 
-### AI Integration
+### 🤖 AI Integration
 - **AI walkthroughs** for any question
 - **Chat with AI** in the context of the question you just answered
 
-### Progress & Analytics
+### 📊 Progress & Analytics
 - Track your **progress** in each Qbank
 - **Detailed reports** on performance by discipline
 - **Predict your exam score** (equated percent correct) based on your performance
 - Apply **filters and search** through any Qbank
 
-### Backup & Cross-Platform
+### 💾 Backup & Cross-Platform
 - **Export your settings** as a JSON backup file
 - **Import settings** on any device — works cross-platform
 
@@ -86,7 +71,18 @@ MingMing is a free, offline-first app designed specifically for medical students
 
 <img src="screenshots/android/IMG-20260617-WA0035.jpg" width="200"> <img src="screenshots/android/IMG-20260617-WA0037.jpg" width="200">
 
+## Download
+
+Go to [**Releases**](https://github.com/Grung-khan/MingMing-releases/releases) to download the latest version.
+
+| Platform | File | Notes |
+|---|---|---|
+| Windows | `MingMing Setup X.Y.Z.exe` | Run installer, follow prompts |
+| Android | `MingMing-X.Y.Z.apk` | Enable "Install from unknown sources" if needed |
+
 ## How to Use
+
+https://github.com/user-attachments/assets/907f9b20-f454-4a28-9bff-c939d8ebbc78
 
 ### Step 1: Install the App
 
