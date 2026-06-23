@@ -136,6 +136,10 @@
       border-color: var(--accent-hover);
     }
 
+    /* Hide scrollbar in popups */
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { scrollbar-width: none; }
+
     /* Smooth scroll */
     html.lenis, html.lenis body { height: auto; }
   </style>
@@ -331,6 +335,7 @@
     // Popup functions
     function closePopup(id) {
       document.getElementById(id).classList.add('hidden');
+      if (id === 'video-popup') document.getElementById('tutorial-video').pause();
       lenis.start();
     }
     function openHowTo() {
@@ -344,9 +349,9 @@
   </script>
 
   <!-- How to Use Popup -->
-  <div id="howto-popup" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-6" onclick="if(event.target===this)closePopup('howto-popup')">
-    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
-    <div class="relative bg-[#141414] border border-gray-800 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8">
+  <div id="howto-popup" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-6">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePopup('howto-popup')"></div>
+    <div class="relative bg-[#141414] border border-gray-800 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8 hide-scrollbar" data-lenis-prevent>
       <button onclick="closePopup('howto-popup')" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -393,8 +398,8 @@
   </div>
 
   <!-- Video Tutorial Popup -->
-  <div id="video-popup" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-6" onclick="if(event.target===this)closePopup('video-popup')">
-    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+  <div id="video-popup" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-6">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePopup('video-popup')"></div>
     <div class="relative bg-[#141414] border border-gray-800 rounded-2xl max-w-3xl w-full overflow-hidden">
       <button onclick="closePopup('video-popup')" class="absolute top-4 right-4 z-10 text-gray-500 hover:text-white transition-colors">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
