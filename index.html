@@ -144,12 +144,21 @@
 
   <!-- Hero -->
   <section class="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden">
-    <!-- Telegram CTA - top right -->
-    <a href="https://t.me/mingming_khan" class="absolute top-6 right-6 z-20 flex items-center gap-2 px-4 py-2.5 rounded-full border border-gray-700 bg-gray-900/80 backdrop-blur-sm text-sm text-gray-300 hover:border-accent hover:text-accent transition-all">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-      <span class="hidden sm:inline">Need free Qbanks? Join Telegram</span>
-      <span class="sm:hidden">Join Telegram</span>
-    </a>
+    <!-- Top right buttons -->
+    <div class="absolute top-6 right-6 z-20 flex items-center gap-3">
+      <button onclick="openVideo()" class="flex items-center gap-2 px-4 py-2.5 rounded-full border border-gray-700 bg-gray-900/80 backdrop-blur-sm text-sm text-gray-300 hover:border-accent hover:text-accent transition-all">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span class="hidden md:inline">Video Tutorial</span>
+      </button>
+      <button onclick="openHowTo()" class="flex items-center gap-2 px-4 py-2.5 rounded-full border border-gray-700 bg-gray-900/80 backdrop-blur-sm text-sm text-gray-300 hover:border-accent hover:text-accent transition-all">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span class="hidden md:inline">How to Use</span>
+      </button>
+      <a href="https://t.me/mingming_khan" class="flex items-center gap-2 px-4 py-2.5 rounded-full border border-gray-700 bg-gray-900/80 backdrop-blur-sm text-sm text-gray-300 hover:border-accent hover:text-accent transition-all">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+        <span class="hidden md:inline">Telegram</span>
+      </a>
+    </div>
 
     <div class="hero-glow"></div>
     <img src="icon.png" alt="MingMing" class="w-28 h-28 rounded-[28px] mb-8 relative z-10">
@@ -318,7 +327,84 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+
+    // Popup functions
+    function closePopup(id) {
+      document.getElementById(id).classList.add('hidden');
+      lenis.start();
+    }
+    function openHowTo() {
+      document.getElementById('howto-popup').classList.remove('hidden');
+      lenis.stop();
+    }
+    function openVideo() {
+      document.getElementById('video-popup').classList.remove('hidden');
+      lenis.stop();
+    }
   </script>
+
+  <!-- How to Use Popup -->
+  <div id="howto-popup" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-6" onclick="if(event.target===this)closePopup('howto-popup')">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+    <div class="relative bg-[#141414] border border-gray-800 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8">
+      <button onclick="closePopup('howto-popup')" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h2 class="text-2xl font-bold mb-6">How to Use</h2>
+
+      <div class="space-y-6 text-gray-300 text-sm leading-relaxed">
+        <div>
+          <h3 class="text-white font-semibold mb-2">Step 1: Install the App</h3>
+          <ul class="list-disc list-inside space-y-1 text-gray-400">
+            <li><strong class="text-gray-300">Windows:</strong> Run <code class="bg-gray-800 px-1.5 py-0.5 rounded text-accent">MingMing Setup X.Y.Z.exe</code> and follow the installer prompts.</li>
+            <li><strong class="text-gray-300">Android:</strong> Open the <code class="bg-gray-800 px-1.5 py-0.5 rounded text-accent">.apk</code> file. If prompted, enable "Install from unknown sources" in your device settings.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold mb-2">Step 2: Import Resources (Qbanks/Libraries/Flashcards)</h3>
+          <p class="mb-2">MingMing does not come with databases pre-loaded. You need to import them:</p>
+          <ol class="list-decimal list-inside space-y-1 text-gray-400">
+            <li>Download a resource ZIP file from the <a href="https://t.me/mingming_khan" class="text-accent hover:underline">Telegram group</a> or other trusted source.</li>
+            <li>Open MingMing and use the <strong class="text-gray-300">Import</strong> option.</li>
+            <li>Select the downloaded ZIP file.</li>
+            <li>Wait for the import to finish.</li>
+            <li>Navigate to the appropriate tab (Qbanks, Libraries, or Flashcards) to access your resource.</li>
+          </ol>
+          <p class="mt-2 text-gray-500"><strong>ZIP Structure Requirement:</strong> Your ZIP must contain one main folder at the top level with the files inside it.</p>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold mb-2">Step 3: Manage Resources Manually (Optional)</h3>
+          <p class="mb-2">If you prefer to add or remove resources manually:</p>
+          <p class="mb-1"><strong class="text-gray-300">Windows:</strong></p>
+          <code class="block bg-gray-800 px-3 py-2 rounded mb-3 text-xs">C:\Users\{your-username}\AppData\Roaming\MingMing\local-databases\</code>
+          <p class="mb-2"><strong class="text-gray-300">Android:</strong> (requires USB cable)</p>
+          <ol class="list-decimal list-inside space-y-1 text-gray-400">
+            <li>Connect your phone to a PC via USB cable.</li>
+            <li>On your phone, select "File Transfer" mode when prompted.</li>
+            <li>Navigate to <code class="bg-gray-800 px-1.5 py-0.5 rounded text-xs">Internal Storage/Android/data/com.mingming.app/files/local-databases/</code></li>
+            <li>Paste unzipped resource folders into this directory.</li>
+            <li>Open MingMing and tap <strong class="text-gray-300">"Refresh Databases"</strong> in User Settings.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Tutorial Popup -->
+  <div id="video-popup" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-6" onclick="if(event.target===this)closePopup('video-popup')">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+    <div class="relative bg-[#141414] border border-gray-800 rounded-2xl max-w-3xl w-full overflow-hidden">
+      <button onclick="closePopup('video-popup')" class="absolute top-4 right-4 z-10 text-gray-500 hover:text-white transition-colors">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <video id="tutorial-video" controls class="w-full">
+        <source src="video_tutorial.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 
 </body>
 </html>
