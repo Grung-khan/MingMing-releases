@@ -6,7 +6,7 @@ Your all-in-one study companion for medical exam preparation.
 
 ## About
 
-MingMing is a free, offline-first app designed for students of **all medical and health sciences** fields — whether you're preparing for **MBBS**, **BDS**, **USMLE Step 1 / Step 2 / Step 3**, **MD**, **PLAB**, **UKMLA**, **AMC**, **SMLE**, or studying **Pharmacy**, **Medical Technology**, or any allied health profession.
+MingMing is a free, offline-first app designed for students of **all medical and health sciences** fields — whether you're preparing for **MBBS**, **BDS**, **USMLE Step 1 / Step 2 / Step 3**, **MD**, **PLAB**, **UKMLA**, **AMC**, **SMLE**, or studying **Pharmacy**, **Medical Technician**, or any allied health profession.
 
 Practice questions from world-renowned Qbank companies like **uWorld**, **Amboss**, **USMLE-Rx**, **Mehlman**, **NBME**, and more.
 

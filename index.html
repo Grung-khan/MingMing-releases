@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MingMing — Free Medical Exam Prep App</title>
-  <meta name="description" content="Free, offline-first study app for medical students featuring uWorld, Amboss, NBME, and 10+ Qbanks. Available on Windows and Android.">
+  <title>MingMing — Free Medical Exam Prep for MBBS, USMLE, PLAB, AMC & More</title>
+  <meta name="description" content="Free, offline-first medical exam prep app for MBBS, BDS, USMLE Step 1/2/3, MD, PLAB, UKMLA, AMC, SMLE, Pharmacy & more. Available on Windows, Android, iOS, macOS & web.">
   <link rel="icon" href="icon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
@@ -169,8 +169,8 @@
     <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 relative z-10">
       <span class="text-accent">Ming</span><span>Ming</span>
     </h1>
-    <p class="text-lg md:text-xl text-gray-400 max-w-xl mb-10 relative z-10">
-      Free, offline-first study app for medical students.<br class="hidden md:block">
+    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mb-10 relative z-10">
+      Free, offline-first study app for <strong class="text-gray-300">MBBS, BDS, USMLE Step 1/2/3, MD, PLAB, UKMLA, AMC, SMLE, Pharmacy &amp; Medical Tech</strong> students.<br class="hidden md:block">
       <strong class="text-gray-300">100% local.</strong> No account. No cloud. No tracking.
     </p>
     <div class="flex flex-wrap gap-4 justify-center relative z-10">
@@ -182,6 +182,10 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download for Android
       </a>
+      <button onclick="openPWAPopup()" class="btn-download btn-outline">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18h.01"/><path d="M9 22h6"/><path d="M7 4h10"/><path d="M7 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/><rect x="9" y="8" width="6" height="4" rx="1"/></svg>
+        iOS / macOS
+      </button>
     </div>
   </section>
 
@@ -277,6 +281,10 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Android
       </a>
+      <button onclick="openPWAPopup()" class="btn-download btn-outline">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18h.01"/><path d="M9 22h6"/><path d="M7 4h10"/><path d="M7 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/><rect x="9" y="8" width="6" height="4" rx="1"/></svg>
+        iOS / macOS
+      </button>
     </div>
 
     <table class="w-full text-left text-sm">
@@ -297,6 +305,11 @@
           <td class="py-3">Android</td>
           <td class="py-3 text-gray-300 font-mono text-xs">MingMing-X.Y.Z.apk</td>
           <td class="py-3 text-gray-400">Enable "Install from unknown sources" if needed</td>
+        </tr>
+        <tr>
+          <td class="py-3">iOS / macOS</td>
+          <td class="py-3 text-gray-300 font-mono text-xs">Progressive Web App</td>
+          <td class="py-3 text-gray-400"><a href="#" onclick="openPWAPopup(); return false;" class="text-accent hover:underline">Install guide</a> — works fully offline after install</td>
         </tr>
       </tbody>
     </table>
@@ -346,6 +359,10 @@
       document.getElementById('video-popup').classList.remove('hidden');
       lenis.stop();
     }
+    function openPWAPopup() {
+      document.getElementById('pwa-popup').classList.remove('hidden');
+      lenis.stop();
+    }
   </script>
 
   <!-- How to Use Popup -->
@@ -363,6 +380,7 @@
           <ul class="list-disc list-inside space-y-1 text-gray-400">
             <li><strong class="text-gray-300">Windows:</strong> Run <code class="bg-gray-800 px-1.5 py-0.5 rounded text-accent">MingMing Setup X.Y.Z.exe</code> and follow the installer prompts.</li>
             <li><strong class="text-gray-300">Android:</strong> Open the <code class="bg-gray-800 px-1.5 py-0.5 rounded text-accent">.apk</code> file. If prompted, enable "Install from unknown sources" in your device settings.</li>
+            <li><strong class="text-gray-300">iOS / macOS:</strong> Open the <a href="#" onclick="closePopup('howto-popup'); setTimeout(() => openPWAPopup(), 300); return false;" class="text-accent hover:underline">PWA install guide</a> for step-by-step instructions.</li>
           </ul>
         </div>
 
@@ -408,6 +426,94 @@
         <source src="video_tutorial.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
+    </div>
+  </div>
+
+  <!-- PWA Install Guide Popup (iOS / macOS) -->
+  <div id="pwa-popup" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-6">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePopup('pwa-popup')"></div>
+    <div class="relative bg-[#141414] border border-gray-800 rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-8 hide-scrollbar" data-lenis-prevent>
+      <button onclick="closePopup('pwa-popup')" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="flex items-center gap-3 mb-6">
+        <div class="text-4xl">📱</div>
+        <div>
+          <h2 class="text-2xl font-bold">MingMing for iOS / macOS</h2>
+          <p class="text-gray-400 text-sm">Installable Progressive Web App</p>
+        </div>
+      </div>
+
+      <div class="space-y-5 text-gray-300 text-sm leading-relaxed">
+
+        <!-- Offline & Local -->
+        <div class="feature-card !p-4">
+          <h3 class="text-white font-semibold mb-1">🔒 100% Offline & Local</h3>
+          <p class="text-gray-400">MingMing runs entirely on your device. Once installed, it works <strong class="text-gray-300">fully offline</strong> — no internet needed for studying. All your data, progress, and resources stay on your device. No account, no cloud, no tracking.</p>
+        </div>
+
+        <!-- Get Qbanks -->
+        <div>
+          <h3 class="text-white font-semibold mb-2">📦 Getting Qbanks & Resources</h3>
+          <p class="mb-2">MingMing does not include databases pre-loaded. Download resource ZIPs from the community:</p>
+          <a href="https://t.me/mingming_khan" class="flex items-center gap-2 text-accent hover:underline mb-3">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+            Join the Telegram Group
+          </a>
+        </div>
+
+        <!-- Import guide -->
+        <div>
+          <h3 class="text-white font-semibold mb-2">📥 Importing into MingMing</h3>
+          <p class="mb-2">ZIP files from Telegram contain one or more Qbank folders. Each ZIP must follow this structure:</p>
+          <code class="block bg-gray-800/80 px-4 py-3 rounded-lg mb-3 text-xs font-mono leading-relaxed">
+<span class="text-accent">MyResources.zip</span>
+└── <span class="text-green-400">uWorld Step 1/</span>
+    ├── database.sqlite
+    ├── meta.json
+    └── ...
+└── <span class="text-green-400">Amboss/</span>
+    ├── database.sqlite
+    ├── meta.json
+    └── ...
+└── <span class="text-green-400">Mehlman/</span>
+    ├── database.sqlite
+    ├── meta.json
+    └── ...
+          </code>
+          <p class="text-gray-400">Simply open MingMing, tap <strong class="text-gray-300">Import</strong>, select the ZIP, and the app handles the rest.</p>
+        </div>
+
+        <!-- Install guide -->
+        <div>
+          <h3 class="text-white font-semibold mb-2">📲 How to Install</h3>
+          <ol class="list-decimal list-inside space-y-2 text-gray-400">
+            <li>Tap the button below to open <strong class="text-gray-300">MingMing PWA</strong> in your browser.</li>
+            <li>Wait for the page to fully load.</li>
+            <li>
+              <strong class="text-gray-300">On Safari (iPhone / iPad / Mac):</strong>
+              <span class="block ml-5 mt-1">Tap <strong>Share</strong> <span class="text-gray-500">(⎙)</span> → scroll down → tap <strong>Add to Home Screen</strong> → tap <strong>Add</strong>.</span>
+            </li>
+            <li>
+              <strong class="text-gray-300">On Chrome (Mac):</strong>
+              <span class="block ml-5 mt-1">Click the install icon <span class="text-gray-500">(⊕)</span> in the address bar → click <strong>Install</strong>.</span>
+            </li>
+            <li>That's it! MingMing now lives on your home screen, ready to use <strong class="text-gray-300">offline</strong>.</li>
+          </ol>
+        </div>
+
+      </div>
+
+      <!-- Proceed button -->
+      <a href="https://grung-khan.github.io/MingMing-pwa/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn-download btn-solid w-full justify-center mt-6"
+         onclick="closePopup('pwa-popup')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18h.01"/><path d="M9 22h6"/><path d="M7 4h10"/><path d="M7 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/><rect x="9" y="8" width="6" height="4" rx="1"/></svg>
+        Proceed to Installation
+      </a>
     </div>
   </div>
 
