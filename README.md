@@ -6,7 +6,9 @@ Your all-in-one study companion for medical exam preparation.
 
 ## About
 
-MingMing is a free, offline-first app designed specifically for medical students to practice questions from world-renowned Qbank companies like **uWorld**, **Amboss**, **USMLE-Rx**, **Mehlman**, **NBME**, and others.
+MingMing is a free, offline-first app designed for students of **all medical and health sciences** fields — whether you're preparing for **MBBS**, **BDS**, **USMLE Step 1 / Step 2 / Step 3**, **MD**, **PLAB**, **UKMLA**, **AMC**, **SMLE**, or studying **Pharmacy**, **Medical Technology**, or any allied health profession.
+
+Practice questions from world-renowned Qbank companies like **uWorld**, **Amboss**, **USMLE-Rx**, **Mehlman**, **NBME**, and more.
 
 **MingMing runs entirely on your device.** All your data stays local — no account, no cloud, no tracking. Internet is only needed for AI features (Gemini integration with a free API key).
 
@@ -73,8 +75,12 @@ Go to [**Releases**](https://github.com/Grung-khan/MingMing-releases/releases) t
 
 | Platform | File | Notes |
 |---|---|---|
-| Windows | `MingMing Setup X.Y.Z.exe` | Run installer, follow prompts |
-| Android | `MingMing-X.Y.Z.apk` | Enable "Install from unknown sources" if needed |
+| 🪟 **Windows** | `MingMing Setup X.Y.Z.exe` | Run installer, follow prompts |
+| 🤖 **Android** | `MingMing-X.Y.Z.apk` | Enable "Install from unknown sources" if needed |
+| 🍏 **iOS / macOS** | Installable PWA | Open the [PWA link](https://grung-khan.github.io/MingMing-pwa/) in Safari, tap Share → Add to Home Screen — works fully offline after first load |
+| 🌐 **Any platform** | Installable PWA | Chrome / Edge / Samsung Internet: open the [PWA link](https://grung-khan.github.io/MingMing-pwa/) and install from the address bar |
+
+> **PWA (Progressive Web App)** — Works offline, stores all data locally on your device, and runs just like a native app. No account, no cloud, no tracking.
 
 ## How to Use
 
@@ -82,8 +88,10 @@ https://github.com/user-attachments/assets/907f9b20-f454-4a28-9bff-c939d8ebbc78
 
 ### Step 1: Install the App
 
-- **Windows:** Run `MingMing Setup X.Y.Z.exe` and follow the installer prompts.
-- **Android:** Open the `.apk` file. If prompted, enable "Install from unknown sources" in your device settings.
+- 🪟 **Windows:** Run `MingMing Setup X.Y.Z.exe` and follow the installer prompts.
+- 🤖 **Android:** Open the `.apk` file. If prompted, enable "Install from unknown sources" in your device settings.
+- 🍏 **iOS / macOS:** Open the [PWA link](https://grung-khan.github.io/MingMing-pwa/) in Safari, tap **Share** → **Add to Home Screen**.
+- 🌐 **Other platforms:** Open the [PWA link](https://grung-khan.github.io/MingMing-pwa/) in Chrome/Edge and install from the address bar.
 
 ### Step 2: Import Resources (Qbanks/Libraries/Flashcards)
 
@@ -115,6 +123,10 @@ The `Android/data/` folder cannot be accessed directly on most phones. You'll ne
 3. Navigate to `Internal Storage/Android/data/com.mingming.app/files/local-databases/` on your PC.
 4. Paste unzipped resource folders into this directory, or delete ones you no longer need.
 5. Open MingMing and tap **"Refresh Databases"** in User Settings.
+
+**PWA (iOS / macOS / other platforms):**
+
+PWAs store data in browser-managed storage. Use the app's **Export / Import** feature (in User Settings) to back up and restore your resources across devices.
 
 ## Getting Help
 
