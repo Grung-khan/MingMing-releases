@@ -387,14 +387,9 @@
         <div>
           <h3 class="text-white font-semibold mb-2">Step 2: Import Resources (Qbanks/Libraries/Flashcards)</h3>
           <p class="mb-2">MingMing does not come with databases pre-loaded. You need to import them:</p>
-          <ol class="list-decimal list-inside space-y-1 text-gray-400">
-            <li>Download a resource ZIP file from the <a href="https://t.me/mingming_khan" class="text-accent hover:underline">Telegram group</a> or other trusted source.</li>
-            <li>Open MingMing and use the <strong class="text-gray-300">Import</strong> option.</li>
-            <li>Select the downloaded ZIP file.</li>
-            <li>Wait for the import to finish.</li>
-            <li>Navigate to the appropriate tab (Qbanks, Libraries, or Flashcards) to access your resource.</li>
-          </ol>
-          <p class="mt-2 text-gray-500"><strong>ZIP Structure Requirement:</strong> Your ZIP must contain one main folder at the top level with the files inside it.</p>
+          <p class="mb-2 text-gray-400"><strong class="text-gray-300">Windows / Android:</strong> Download a resource ZIP from the <a href="https://t.me/mingming_khan" class="text-accent hover:underline">Telegram group</a>, open MingMing, use the <strong class="text-gray-300">Import</strong> option, and select the ZIP file. Wait for import to finish.</p>
+          <p class="mb-2 text-gray-400"><strong class="text-gray-300">iOS / macOS (PWA):</strong> See the <a href="#" onclick="closePopup('howto-popup'); setTimeout(() => openPWAPopup(), 300); return false;" class="text-accent hover:underline">PWA install & import guide</a> — the process is different (folders, not ZIPs).</p>
+          <p class="text-gray-500"><strong>ZIP Structure Requirement (Windows/Android):</strong> Your ZIP must contain one main folder at the top level with the files inside it.</p>
         </div>
 
         <div>
@@ -465,24 +460,32 @@
 
         <!-- Import guide -->
         <div>
-          <h3 class="text-white font-semibold mb-2">📥 Importing into MingMing</h3>
-          <p class="mb-2">ZIP files from Telegram contain one or more Qbank folders. Each ZIP must follow this structure:</p>
+          <h3 class="text-white font-semibold mb-2">📥 Importing into MingMing (PWA)</h3>
+          <p class="mb-2">Unlike the desktop/Android versions, the PWA cannot import ZIP files directly. You need to:</p>
+          <ol class="list-decimal list-inside space-y-2 text-gray-400 mb-3">
+            <li><strong class="text-gray-300">Download</strong> resource ZIPs from the <a href="https://t.me/mingming_khan" class="text-accent hover:underline">Telegram group</a>.</li>
+            <li><strong class="text-gray-300">Extract</strong> them on your device to get the Qbank folders.</li>
+            <li><strong class="text-gray-300">Organize</strong> all Qbank folders into a single parent folder.</li>
+          </ol>
+          <p class="mb-2">The folder structure should look like this:</p>
           <code class="block bg-gray-800/80 px-4 py-3 rounded-lg mb-3 text-xs font-mono leading-relaxed">
-<span class="text-accent">MyResources.zip</span>
-└── <span class="text-green-400">uWorld Step 1/</span>
-    ├── database.sqlite
-    ├── meta.json
-    └── ...
-└── <span class="text-green-400">Amboss/</span>
-    ├── database.sqlite
-    ├── meta.json
-    └── ...
-└── <span class="text-green-400">Mehlman/</span>
-    ├── database.sqlite
-    ├── meta.json
-    └── ...
+<span class="text-gray-400">┌─ You choose this folder in MingMing ─┐</span>
+<span class="text-accent">My Qbanks/</span>                         <span class="text-gray-500">← parent folder</span>
+├── <span class="text-green-400">uworld-step1-2025/</span>
+│   ├── database.sqlite
+│   ├── meta.json
+│   └── ...
+├── <span class="text-green-400">passmedicine-mrcp/</span>
+│   ├── database.sqlite
+│   ├── meta.json
+│   └── ...
+├── <span class="text-green-400">nbme-medicine-form10/</span>
+│   ├── database.sqlite
+│   ├── meta.json
+│   └── ...
+└── ...
           </code>
-          <p class="text-gray-400">Simply open MingMing, tap <strong class="text-gray-300">Import</strong>, select the ZIP, and the app handles the rest.</p>
+          <p class="text-gray-400">Open MingMing, tap <strong class="text-gray-300">Import</strong>, and select the parent folder (<span class="text-accent">My Qbanks/</span>). MingMing will discover all Qbank subfolders inside.</p>
         </div>
 
         <!-- Install guide -->
