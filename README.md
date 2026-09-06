@@ -3,6 +3,7 @@
 Your all-in-one study companion for medical exam preparation.
 
 [![Join Community](https://img.shields.io/badge/Join-Community-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/mingming_khan)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/mingmingapp)
 
 ## About
 
@@ -258,6 +259,7 @@ SELECT text, contentId FROM Search WHERE content MATCH ?;
 ## Getting Help
 
 - **Community Group:** [t.me/mingming_khan](https://t.me/mingming_khan) — Join for updates, discussion, and support. This is a community-run group. MingMing is not affiliated with or endorsed by any qbank provider. Please verify the authenticity and legality of any resources shared by third parties.
+- **Support the Project:** If MingMing has helped you, consider [buying us a coffee](https://buymeacoffee.com/mingmingapp) to keep the project going.
 - **Bug Reports & Feature Requests:** [Open an Issue](https://github.com/Grung-khan/MingMing-releases/issues)
 
 ## License
