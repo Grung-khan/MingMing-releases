@@ -259,7 +259,7 @@ SELECT text, contentId FROM Search WHERE content MATCH ?;
 ## Getting Help
 
 - **Community Group:** [t.me/mingming_khan](https://t.me/mingming_khan) — Join for updates, discussion, and support. This is a community-run group. MingMing is not affiliated with or endorsed by any qbank provider. Please verify the authenticity and legality of any resources shared by third parties.
-- **Support the Project:** If MingMing has helped you, consider [buying us a coffee](https://buymeacoffee.com/mingmingapp) to keep the project going.
+- **Support the Project:** If MingMing has helped you, consider <a href="https://buymeacoffee.com/mingmingapp"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" height="18" style="vertical-align:middle"></a> to keep the project going.
 - **Bug Reports & Feature Requests:** [Open an Issue](https://github.com/Grung-khan/MingMing-releases/issues)
 
 ## License
