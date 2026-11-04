@@ -199,7 +199,7 @@ Both files are optional. Without a manifest, the resource still imports via the 
 local-databases/
   my-qbank/                 # folder name = resourceId
     manifest.json            # required for attribution (recommended)
-    icon.png                 # required for the card to show the logo
+    icon.png                 # optional — publisher logo shown on the resource card
     my-qbank.db              # primary database (.db, .sqlite, .sqlite3, or .bin)
     media/                   # optional, images referenced by the content
     my-qbank.db-shm          # optional SQLite journal files
