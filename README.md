@@ -18,8 +18,8 @@ MingMing reads commonly-distributed unencrypted qbank databases in a standard SQ
 ### 📚 Content & Resources
 - Supports importing qbank databases in the standard unencrypted SQLite format (`.db` / `.sqlite` / `.sqlite3` / `.bin` files)
 - Also supports library databases (article-style content with table of contents and full-text search)
-- Also supports flashcard databases (both qbank-style and Anki-compatible formats)
-- See the [Database Schema](#database-schema) section for the expected folder structure and table definitions
+- Also supports flashcard databases (qbank-schema databases with `type: "flashcard"` in the manifest)
+- See the [Manifest](#manifestjson-and-iconpng) section and the [Schema Docs](docs/) folder for the expected folder structure and table definitions
 
 ### 🎨 Beautiful, Polished UI
 - Clean, intuitive interface
@@ -108,6 +108,8 @@ MingMing does not come with databases pre-loaded. You need to import them:
 
 **ZIP Structure Requirement:** Your ZIP must contain one main folder at the top level with the files inside it. Avoid ZIPs with loose files at the top level.
 
+**Strongly recommended:** the folder should also contain a `manifest.json` (source of truth for the resource's display name, description, publisher, version and tags) and an `icon.png`. Both are optional; without them the resource still imports, but it is shown with a generic name and no attribution.
+
 ### Step 3: Manage Resources Manually (Optional)
 
 If you prefer to add or remove resources manually:
@@ -136,125 +138,93 @@ The `Android/data/` folder cannot be accessed directly on most phones. You'll ne
 
 PWAs store data in browser-managed storage. Use the app's **Export / Import** feature (in User Settings) to back up and restore your resources across devices.
 
-## Database Schema
+## Manifest.json and icon.png
 
-MingMing supports three resource types: **qbanks**, **libraries**, and **flashcards**. Each is a folder inside `local-databases/` containing at least one SQLite database file.
+Packages ship inside a single top-level folder, and the folder should carry a `manifest.json` alongside the database. The manifest is the source of truth for what the resource shows up as in the app — display name, description, publisher, version, tags, icon and routing. An `icon.png` (the publisher/vendor logo) is shown on the resource's card.
 
-### Folder Structure
+Both files are optional. Without a manifest, the resource still imports via the legacy name-sniffing fallback, but it is shown with a generic name and no attribution.
+
+**A typical manifest:**
+
+```json
+{
+  "manifestVersion": 1,
+  "resourceId": "my-qbank",
+  "displayName": "UWorld Step 2 CK 2025",
+  "description": "UWorld Step 2 CK question bank, 2025 edition",
+  "type": "qbank",
+  "publisher": "UWorld",
+  "adapter": "qbank",
+  "version": "2025",
+  "packagedAt": "2026-10-20T12:48:29+00:00",
+  "sizeBytes": 677223085,
+  "icon": "icon.png",
+  "tags": [
+    "USMLE",
+    "Step 2 CK",
+    "QBank"
+  ],
+  "primaryDb": "my-qbank.db",
+  "files": [
+    "media/",
+    "my-qbank.db",
+    "my-qbank.db-shm",
+    "my-qbank.db-wal"
+  ],
+  "searchDb": null,
+  "metaScheme": {}
+}
+```
+
+**Manifest rules:**
+
+- `manifestVersion` must be `1`
+- `resourceId` must equal the folder name (canonical compare: case-insensitive, letters and digits only)
+- `primaryDb` must name a file that actually exists in the folder
+- `type` is `qbank`, `library`, or `flashcard`; `adapter` is one of `qbank`, `article`, `uptodate`, `lexi-drugs`, `visualdx`, `flashcard`, `access-medicine` — pair it via the table below
+- `publisher` is the one attribution field (replaces company/author)
+- `files` lists every file/folder in the package (rough edge cases like `__MACOSX` are still skipped on import)
+
+**Type ↔ adapter pairings:**
+
+| `type` | valid `adapter` values |
+|---|---|
+| `qbank` | `qbank` |
+| `library` | `article`, `uptodate`, `lexi-drugs` (also `visualdx`, `access-medicine`) |
+| `flashcard` | `flashcard` |
+
+**Folder structure:**
 
 ```
 local-databases/
-  my-resource-name/          # folder name = resource id (lowercase, hyphenated)
-    my-resource-name.db      # primary database file (.db, .sqlite, .sqlite3, or .bin)
-    media/                   # optional: images referenced by questions
-    search.db                # optional: full-text search index (auto-excluded from primary)
+  my-qbank/                 # folder name = resourceId
+    manifest.json            # required for attribution (recommended)
+    icon.png                 # required for the card to show the logo
+    my-qbank.db              # primary database (.db, .sqlite, .sqlite3, or .bin)
+    media/                   # optional, images referenced by the content
+    my-qbank.db-shm          # optional SQLite journal files
+    my-qbank.db-wal
 ```
 
 **Rules:**
 - Folder name should match the resource id exactly
 - The primary DB file must be `.db`, `.sqlite`, `.sqlite3`, or `.bin`
-- Files ending in `-wal` or `-shm` are SQLite journal files (ignored by selection, but kept alongside the DB)
+- Files ending in `-wal` or `-shm` are SQLite journal files (kept alongside the DB)
 - Files matching `search`, `fts`, or `index` patterns are excluded from primary file selection
 
 ---
 
-### Qbank Schema
+## Database Schema
 
-A qbank database requires four tables:
+MingMing supports three resource types: **qbanks**, **libraries**, and **flashcards**. Each is a folder inside `local-databases/` carrying its manifest and primary database.
 
-#### `Questions`
+The schema documentation is split into one markdown file per adapter. Pick the one you need:
 
-| Column | Type | Required | Description |
-|---|---|---|---|
-| `id` | INTEGER | Yes | Primary key |
-| `question` | TEXT | Yes | Question stem (HTML) |
-| `explanation` | TEXT | Yes | Explanation (HTML) |
-| `corrAns` | TEXT | Yes | Correct answer letter(s), e.g. `"A"` or `"B,D"` |
-| `subId` | TEXT | Yes | Comma-separated subject IDs, e.g. `"3,5"` |
-| `sysId` | TEXT | Yes | Comma-separated system IDs, e.g. `"2,7"` |
-| `title` | TEXT | Yes | Question title or one-line description |
-| `mediaName` | TEXT | No | Primary image filename (relative to `media/` folder) |
-| `otherMedias` | TEXT | No | Additional media filenames |
-| `pplTaken` | INTEGER | No | Total people who took this question (NBME-style stats) |
-| `corrTaken` | INTEGER | No | People who answered correctly (NBME-style stats) |
-
-#### `Answers`
-
-| Column | Type | Required | Description |
-|---|---|---|---|
-| `id` | INTEGER | Yes | Primary key |
-| `qId` | INTEGER | Yes | Foreign key → `Questions.id` |
-| `answerId` | INTEGER | Yes | Answer option number (1-based) |
-| `answerText` | TEXT | Yes | Answer option text |
-| `correctPercentage` | REAL | No | Percentage of users who selected this option |
-
-#### `Subjects`
-
-| Column | Type | Required | Description |
-|---|---|---|---|
-| `id` | INTEGER | Yes | Primary key (referenced by `Questions.subId`) |
-| `name` | TEXT | Yes | Subject/discipline name |
-
-#### `Systems`
-
-| Column | Type | Required | Description |
-|---|---|---|---|
-| `id` | INTEGER | Yes | Primary key (referenced by `Questions.sysId`) |
-| `name` | TEXT | Yes | Body system name |
-
-**Minimum viable qbank query:**
-```sql
-SELECT COUNT(*) FROM Questions;
-SELECT id, question, explanation, corrAns, subId, sysId, title FROM Questions;
-SELECT id, qId, answerId, answerText FROM Answers WHERE qId = ?;
-SELECT id, name FROM Subjects;
-SELECT id, name FROM Systems;
-```
-
----
-
-### Library Schema (Docs + TOC)
-
-A library database requires three tables:
-
-#### `Docs`
-
-| Column | Type | Required | Description |
-|---|---|---|---|
-| `id` | INTEGER | Yes | Primary key |
-| `title` | TEXT | Yes | Article title |
-| `doc` | TEXT | Yes | Article content (HTML) |
-
-#### `TOC`
-
-| Column | Type | Required | Description |
-|---|---|---|---|
-| `id` | INTEGER | Yes | Primary key |
-| `name` | TEXT | Yes | TOC entry name |
-| `docId` | INTEGER | Yes | Foreign key → `Docs.id` |
-| `parentId` | INTEGER | Yes | Parent TOC entry (0 = root) |
-| `leaf` | INTEGER | Yes | 1 if leaf node, 0 if has children |
-| `section` | TEXT | No | Section grouping |
-| `audience` | TEXT | No | Target audience |
-
-#### `Search`
-
-| Column | Type | Required | Description |
-|---|---|---|---|
-| `text` | TEXT | Yes | Search term |
-| `content` | TEXT | Yes | FTS content (queried with `MATCH`) |
-| `contentId` | INTEGER | Yes | Foreign key → `Docs.id` |
-
-**Minimum viable library query:**
-```sql
-SELECT COUNT(*) FROM Docs;
-SELECT id, title, doc FROM Docs WHERE id = ?;
-SELECT id, name, docId, parentId, leaf FROM TOC WHERE parentId = 0;
-SELECT id, name, docId, parentId, leaf FROM TOC WHERE parentId = ?;
-SELECT text, contentId FROM Search WHERE content MATCH ?;
-```
-
----
+- [Question Bank Schema](docs/schema-qbank.md) — the `qbank` adapter (Questions, Answers, Subjects, Systems, Refs, Search)
+- [Article Library Schema](docs/schema-article.md) — the `article` adapter (Docs, TOC, Search — UWorld Notes / AMBOSS-style libraries)
+- [UpToDate Library Schema](docs/schema-uptodate.md) — the `uptodate` adapter (Docs, TOC + `audience`, Search, Graphics)
+- [Lexi-Drugs Schema](docs/schema-lexidocs.md) — the `lexi-drugs` adapter (document, chapter, field, view, viewfield, indexitem, media)
+- [Flashcard Schema](docs/schema-flashcard.md) — the `flashcard` adapter (qbank-schema database with `type: "flashcard"`)
 
 ## Getting Help
 
