@@ -11,7 +11,7 @@ MingMing is a free, offline-first app designed for students of **all medical and
 
 MingMing reads commonly-distributed unencrypted qbank databases in a standard SQLite folder structure. You provide the databases — MingMing provides the study experience.
 
-**MingMing runs entirely on your device.** All your data stays local — no account, no cloud, no tracking. Internet is only needed for AI features (Gemini integration with a free API key).
+**MingMing runs entirely on your device.** All your data stays local — no account, no cloud, no tracking. Internet is only used for optional AI features (Gemini, with your own free API key) and the startup check for app updates (you can skip it for the rest of the day).
 
 ## Features
 
@@ -23,7 +23,8 @@ MingMing reads commonly-distributed unencrypted qbank databases in a standard SQ
 
 ### 🎨 Beautiful, Polished UI
 - Clean, intuitive interface
-- 7 themes: **Light**, **Dark Mode**, **Surgical Scrub**, **Petri Dish**, **Champion Gold**, **Biohazard**, **Neon Virus**
+- 4 app themes: **Light**, **Dark**, **Surgical Scrub**, **Champion Gold**
+- Session page colors (reading backgrounds) in **MingMing** and **NBME** modes: **App theme**, **Paper**, **Soft gray**, **Dark**, **Sepia**, **Sage**, **Warm cream**, **Solarized light**, **OLED black**, **Dark sepia**, **Dark sage**
 
 ### 🛠️ Customizable Study Sessions
 - Build a personalized session by **discipline**, **system**, and **topic**
@@ -79,10 +80,10 @@ Go to [**Releases**](https://github.com/Grung-khan/MingMing-releases/releases) t
 | 🪟 **Windows** | `MingMing Setup X.Y.Z.exe` | Run installer, follow prompts |
 | 🤖 **Android** | `MingMing-X.Y.Z.apk` | Enable "Install from unknown sources" if needed |
 | 🐧 **Linux (Debian/Ubuntu)** | `MingMing_X.Y.Z_amd64.deb` | `sudo dpkg -i MingMing_X.Y.Z_amd64.deb` |
-| 🍏 **iOS / macOS** | Installable PWA | Open the [PWA link](https://grung-khan.github.io/MingMing-pwa/) in Safari, tap Share → Add to Home Screen — works fully offline after first load |
-| 🌐 **Any platform** | Installable PWA | Chrome / Edge / Samsung Internet: open the [PWA link](https://grung-khan.github.io/MingMing-pwa/) and install from the address bar |
+| 🐧 **Linux (Fedora/RHEL/openSUSE)** | `MingMing-X.Y.Z-1.x86_64.rpm` | `sudo rpm -i MingMing-X.Y.Z-1.x86_64.rpm` (or `sudo dnf install ./MingMing-X.Y.Z-1.x86_64.rpm`) |
+| 🌐 **PWA (abandoned)** | [PWA link](https://grung-khan.github.io/MingMing-pwa/) | **No longer maintained.** The web/PWA build is abandoned; native apps above are the supported installs. The old installable PWA may still work in a browser (Add to Home Screen) but will not receive fixes or updates. |
 
-> **PWA (Progressive Web App)** — Works offline, stores all data locally on your device, and runs just like a native app. No account, no cloud, no tracking.
+> **PWA status:** abandoned / not maintained. Prefer the native Windows, Android, or Linux builds. There is no native iOS/macOS build.
 
 ## How to Use
 
@@ -92,9 +93,9 @@ https://github.com/user-attachments/assets/907f9b20-f454-4a28-9bff-c939d8ebbc78
 
 - 🪟 **Windows:** Run `MingMing Setup X.Y.Z.exe` and follow the installer prompts.
 - 🤖 **Android:** Open the `.apk` file. If prompted, enable "Install from unknown sources" in your device settings.
-- 🐧 **Linux:** Download the `.deb` file and install with `sudo dpkg -i MingMing_X.Y.Z_amd64.deb`.
-- 🍏 **iOS / macOS:** Open the [PWA link](https://grung-khan.github.io/MingMing-pwa/) in Safari, tap **Share** → **Add to Home Screen**.
-- 🌐 **Other platforms:** Open the [PWA link](https://grung-khan.github.io/MingMing-pwa/) in Chrome/Edge and install from the address bar.
+- 🐧 **Linux (Debian/Ubuntu):** `sudo dpkg -i MingMing_X.Y.Z_amd64.deb`
+- 🐧 **Linux (Fedora/RHEL/openSUSE):** `sudo rpm -i MingMing-X.Y.Z-1.x86_64.rpm` (or `sudo dnf install ./MingMing-X.Y.Z-1.x86_64.rpm`)
+- 🌐 **PWA (abandoned):** open the [PWA link](https://grung-khan.github.io/MingMing-pwa/) in a browser and install if desired; **not maintained** and not recommended over native builds. No native iOS/macOS app is provided.
 
 ### Step 2: Import Resources (Qbanks/Libraries/Flashcards)
 
@@ -134,9 +135,9 @@ The `Android/data/` folder cannot be accessed directly on most phones. You'll ne
 4. Paste unzipped resource folders into this directory, or delete ones you no longer need.
 5. Open MingMing and tap **"Refresh Databases"** in User Settings.
 
-**PWA (iOS / macOS / other platforms):**
+**PWA (abandoned):**
 
-PWAs store data in browser-managed storage. Use the app's **Export / Import** feature (in User Settings) to back up and restore your resources across devices.
+The web/PWA build is no longer maintained. If you still have it installed, it stores data in browser-managed storage — use **Export / Import** (User Settings) to back up or move data. Prefer the native apps for ongoing use.
 
 ## Manifest.json and icon.png
 
