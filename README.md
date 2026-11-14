@@ -17,7 +17,7 @@ MingMing reads commonly-distributed unencrypted qbank databases in a standard SQ
 
 ### 📚 Content & Resources
 - Supports importing qbank databases in the standard unencrypted SQLite format (`.db` / `.sqlite` / `.sqlite3` / `.bin` files)
-- Also supports library databases (article-style content with table of contents and full-text search)
+- Also supports library databases (article/notes and reference content with table of contents and search, plus clinical workflows such as VisualDX)
 - Also supports flashcard databases (qbank-schema databases with `type: "flashcard"` in the manifest)
 - See the [Manifest](#manifestjson-and-iconpng) section and the [Schema Docs](docs/) folder for the expected folder structure and table definitions
 
@@ -218,12 +218,13 @@ local-databases/
 
 MingMing supports three resource types: **qbanks**, **libraries**, and **flashcards**. Each is a folder inside `local-databases/` carrying its manifest and primary database.
 
-The schema documentation is split into one markdown file per adapter. Pick the one you need:
+The schema documentation is split by resource format / adapter. Pick the one you need:
 
-- [Question Bank Schema](docs/schema-qbank.md) — the `qbank` adapter (Questions, Answers, Subjects, Systems, Refs, Search)
+- [Question Bank Schema](docs/schema-qbank.md) — the `qbank` adapter (Questions, Answers, Subjects, Systems, Refs, Search; linked question sets via `parentQId`/`questionType`)
 - [Article Library Schema](docs/schema-article.md) — the `article` adapter (Docs, TOC, Search — UWorld Notes / AMBOSS-style libraries)
 - [UpToDate Library Schema](docs/schema-uptodate.md) — the `uptodate` adapter (Docs, TOC + `audience`, Search, Graphics)
 - [Lexi-Drugs Schema](docs/schema-lexidocs.md) — the `lexi-drugs` adapter (document, chapter, field, view, viewfield, indexitem, media)
+- [VisualDX Schema](docs/schema-visualdx.md) — the `visualdx` library workflow (diagnostic databases + module/body-location configs + icon/image assets)
 - [Flashcard Schema](docs/schema-flashcard.md) — the `flashcard` adapter (qbank-schema database with `type: "flashcard"`)
 
 ## Getting Help
